@@ -22,5 +22,8 @@ logs/
 # test coverage output
 coverage/
 
+# incremental typecheck/build info
+*.tsbuildinfo
+
 # local agent workspace (session logs / project memory), machine-specific
 .workbuddy/

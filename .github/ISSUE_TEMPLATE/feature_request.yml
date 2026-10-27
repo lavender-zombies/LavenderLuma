@@ -27,7 +27,7 @@ body:
         - HTTP Server / Post 适配器
         - WebUI 管理面板
         - SDK (`@lavenderluma/sdk`)
-        - UI 组件 (`@lavenderluma/ui`)
+        - MCP (`@lavenderluma/mcp`)
         - Bridge / Core(协议层)
         - 构建 / 发布流程
         - 文档

@@ -28,14 +28,14 @@ The SDK is an ES module package that supports native Node.js imports and bundler
 5. Run `pnpm --filter @lavenderluma/sdk build`.
 6. Run `pnpm --filter @lavenderluma/sdk pack --dry-run` to inspect published files.
 
-## Automated npm Publish
+## Publishing to npm
 
-`.github/workflows/sdk-npm-publish.yml` publishes `@lavenderluma/sdk` when SDK-related files reach `main`, including the automated `dev` to `main` promotion flow. The publish job uses npm Trusted Publishing with the GitHub Environment named `LavenderLuma`; it authenticates through GitHub Actions OIDC and does not require an `NPM_TOKEN` secret.
+Publishing is manual: run the steps above, then `npm publish` from `packages/sdk`.
+The automated `sdk-npm-publish.yml` workflow was removed, so no OIDC trusted
+publisher or `NPM_TOKEN` secret is configured for this repository.
 
-The one-time npm settings for SDK, UI, and MCP are documented in
-[`.github/npm-trusted-publishing.md`](../../.github/npm-trusted-publishing.md).
-
-If the package version already exists on npm, the workflow skips publishing that run. Bump `packages/sdk/package.json` before merging SDK changes that should create a new npm release.
+If the package version already exists on npm, bump `packages/sdk/package.json`
+before publishing.
 
 ## Action Compatibility
 

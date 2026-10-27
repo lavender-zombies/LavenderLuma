@@ -91,7 +91,7 @@ export default defineConfig([
         },
     },
     {
-        files: ['packages/webui/src/**/*.{ts,tsx}', 'packages/ui/src/**/*.{ts,tsx}'],
+        files: ['packages/webui/src/**/*.{ts,tsx}'],
         extends: [reactHooks.configs.flat.recommended, reactRefresh.configs.vite],
         languageOptions: {
             globals: globals.browser,

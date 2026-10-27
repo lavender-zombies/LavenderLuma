@@ -10,7 +10,7 @@
     "build:sdk": "pnpm --filter @lavenderluma/sdk build",
     "build:webui": "pnpm --filter webui build",
     "build:mcp": "pnpm --filter @lavenderluma/mcp build",
-    "build:all": "pnpm --filter @lavenderluma/core build:all && pnpm --filter @lavenderluma/sdk build && pnpm --filter @lavenderluma/mcp build && pnpm --filter @lavenderluma/ui build && pnpm --filter webui build",
+    "build:all": "pnpm --filter @lavenderluma/core build:all && pnpm --filter @lavenderluma/sdk build && pnpm --filter @lavenderluma/mcp build && pnpm --filter webui build",
     "check:release-layout": "node tools/check-release-layout.mjs",
     "dev": "pnpm --filter @lavenderluma/core dev",
     "dev:mode": "cd dist && cross-env LAVENDERLUMA_DEV_MODE=1 LAVENDERLUMA_DEV_WEBUI=1 node index.mjs",

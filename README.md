@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://github.com/lavender-zombies/LavenderLuma/releases"><img alt="最新版本" src="https://img.shields.io/github/v/release/lavender-zombies/LavenderLuma?label=release&style=flat-square"></a>
-  <a href="https://github.com/lavender-zombies/LavenderLuma/actions/workflows/dev-build.yml"><img alt="构建状态" src="https://img.shields.io/github/actions/workflow/status/lavender-zombies/LavenderLuma/dev-build.yml?branch=dev&style=flat-square&label=build"></a>
+  <a href="https://github.com/lavender-zombies/LavenderLuma/actions/workflows/dev-build.yml"><img alt="构建状态" src="https://img.shields.io/github/actions/workflow/status/lavender-zombies/LavenderLuma/dev-build.yml?branch=main&style=flat-square&label=build"></a>
   <a href="https://www.npmjs.com/package/@lavenderluma/sdk"><img alt="LavenderLuma SDK 版本" src="https://img.shields.io/npm/v/%40lavenderluma%2Fsdk?style=flat-square&label=sdk&color=287fb8"></a>
   <a href="https://www.npmjs.com/package/@lavenderluma/mcp"><img alt="LavenderLuma MCP 版本" src="https://img.shields.io/npm/v/%40lavenderluma%2Fmcp?style=flat-square&label=mcp&color=7658c7"></a>
   <a href="https://github.com/lavender-zombies/LavenderLuma/stargazers"><img alt="GitHub Stars" src="https://img.shields.io/github/stars/lavender-zombies/LavenderLuma?style=flat-square"></a>
@@ -12,7 +12,7 @@
 
 <p align="center">
   <a href="#快速开始">快速开始</a> ·
-  <a href="https://lavender-zombies.github.io/LavenderLuma/zh/docs/api">动作参考</a> ·
+  <a href="#接入与文档">接入与文档</a> ·
   <a href="https://github.com/lavender-zombies/LavenderLuma/issues">问题反馈</a>
 </p>
 
@@ -59,10 +59,11 @@ LavenderLuma 是面向 QQ 客户端的 TypeScript 互操作运行时，将 QQ �
 
 | 入口 | 文档 |
 | --- | --- |
-| WebSocket / HTTP | [OneBot 动作参考](https://lavender-zombies.github.io/LavenderLuma/zh/docs/api) |
-| 部署（Docker / Windows） | [部署指南](https://lavender-zombies.github.io/LavenderLuma/zh/docs/guide/deploy) |
-| TypeScript SDK | [`packages/sdk/README.md`](packages/sdk/README.md) |
-| MCP | [`packages/mcp/README.md`](packages/mcp/README.md) |
+| WebSocket / HTTP | OneBot v11 动作与事件；完整动作清单见 [`packages/mcp/src/generated/catalog.json`](packages/mcp/src/generated/catalog.json) |
+| TypeScript SDK | [`packages/sdk/README.md`](packages/sdk/README.md) · [消息段](packages/sdk/MESSAGING.md) · [流式接口](packages/sdk/STREAMING.md) |
+| MCP | [`packages/mcp/README.md`](packages/mcp/README.md) · [能力清单](packages/mcp/AGENT_FEATURES.md) |
+| WebUI 嵌入 | [`packages/webui/INTEGRATIONS.md`](packages/webui/INTEGRATIONS.md) |
+| 协议与上传 | [`packages/proto-defs`](packages/proto-defs) · [Highway 上传](packages/protocol/HIGHWAY_UPLOADS.md) |
 
 JSON 消息段接受标准的 `data.data` 字符串，也兼容 `data.data` 非数组对象和 `{ type: "json", data: "..." }` 简写；`data` 必填，最终内容必须是 JSON 对象。
 
@@ -73,13 +74,12 @@ JSON 消息段接受标准的 `data.data` 字符串，也兼容 `data.data` 非�
 ```bash
 git clone https://github.com/lavender-zombies/LavenderLuma.git
 cd LavenderLuma
-git checkout dev
 pnpm install --frozen-lockfile
 pnpm typecheck
 pnpm test
 ```
 
-贡献流程见 [`CONTRIBUTING.md`](CONTRIBUTING.md)；模块边界与项目词汇见 [`CONTEXT.md`](CONTEXT.md)；开发方向见 [`RoadMap.md`](RoadMap.md)。
+各包的分层职责与约束条件记录在对应包的 `README.md` 中：`packages/proton`（protobuf 编译期代码生成）、`packages/bridge`（进程注入与管道）、`packages/protocol`（封包解析与 OIDB 服务）、`packages/onebot`（OneBot 动作与事件）、`packages/core`（Bridge 会话、ApiHub 与 WebUI 服务端）。
 
 ## 使用边界与许可
 
@@ -94,7 +94,6 @@ LavenderLuma is source-available for study and non-commercial self-hosting, but 
 
 - [提交问题](https://github.com/lavender-zombies/LavenderLuma/issues)
 - [QQ 群](https://qm.qq.com/q/g3UMLpWALe)
-- [Telegram](https://t.me/napcatqq)
 
 项目参考了 [LagrangeV2](https://github.com/LagrangeDev/LagrangeV2) 的协议定义与 [NapCatQQ](https://github.com/NapNeko/NapCatQQ) 的实现思路。
 
